@@ -1,0 +1,23 @@
+{
+  "name": "workout-generator",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Nicholas Clancy - Arsenal - Nomm",
+  "contributors": [
+    "Arsenal - Nomm"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "npm install"
+  },
+  "devDependencies": {
+    "backbone": "latest",
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "knockback": "latest",
+    "knockout": "latest",
+    "moment": "latest",
+    "requirejs": "latest",
+    "underscore": "latest"
+  }
+}
