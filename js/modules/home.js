@@ -35,7 +35,6 @@ define([
           { value: "AMRAP", chance: 0.2 },
           { value: "", chance: 0.4 }
         ]),
-        emptyCurrentWorkout: $.proxy(this.emptyCurrentWorkout, this),
         generateWorkout: $.proxy(this.generateWorkout, this),
         saveWorkout: $.proxy(this.saveWorkout, this),
         workoutCategory: ko.observable(""),
@@ -52,13 +51,13 @@ define([
       return this.viewModel.filtersVisible(!this.viewModel.filtersVisible());
     },
 
-    emptyCurrentWorkout: function() {
+    resetCurrentWorkout: function() {
       this.viewModel.currentWorkout([]);
       this.viewModel.compoundsInWorkout(0);
     },
 
     generateWorkout: function() {
-      this.emptyCurrentWorkout();
+      this.resetCurrentWorkout();
       this.setWorkoutExercises();
       var workoutExercisesWithCategory = this.getExercises();
       var exerciseAmountLength = this.getLengthOfExercises(workoutExercisesWithCategory);
