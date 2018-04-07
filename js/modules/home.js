@@ -67,7 +67,7 @@ define([
       this.pickExercisesForCurrentWorkout(exerciseAmountLength, workoutExercisesWithCategory);
 
       this.sortCompoundExercises();
-
+      this.createSupersets();
       return this.viewModel.currentWorkout();
     },
 
@@ -224,6 +224,22 @@ define([
           return workoutExercise.type !== "Compound";
         });
         return workoutExercisesWithoutCompounds;
+      }
+    },
+
+    createSupersets: function(){
+      var probabilityOfSuperset = 0.5;
+      var randomNumber = Math.random();
+
+      if (probabilityOfSuperset > randomNumber){
+        var exercisesWithSupersets = _.filter(this.viewModel.currentWorkout(), function(exercise){
+          return exercise.canSuperset === true;
+        });
+        //Filter based on category to avoid random supersets
+        if (exercisesWithSupersets.length > 1){
+
+        }
+
       }
     },
 
