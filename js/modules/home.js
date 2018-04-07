@@ -26,10 +26,10 @@ define([
 
     setupViewModel: function() {
       this.viewModel = {
-        workoutExercises: ko.observableArray(allExercises),
+        workoutExercises: ko.observableArray(),
         compoundsInWorkout: ko.observable(0),
         currentWorkout: ko.observableArray([]),
-        repSchemes: ko.observableArray([
+        randomRepSchemes: ko.observableArray([
           { value: "12", chance: 0.2 },
           { value: "15", chance: 0.2 },
           { value: "AMRAP", chance: 0.2 },
@@ -37,23 +37,14 @@ define([
         ]),
         emptyCurrentWorkout: $.proxy(this.emptyCurrentWorkout, this),
         generateWorkout: $.proxy(this.generateWorkout, this),
-        getRandomRepScheme: $.proxy(this.getRandomRepScheme, this),
-        pickRandomRepScheme: $.proxy(this.pickRandomRepScheme, this),
-        limitCompoundExercises: $.proxy(this.limitCompoundExercises, this),
-        checkWorkoutDoesNotIncludeExercise: $.proxy(
-          this.checkWorkoutDoesNotIncludeExercise,
-          this
-        ),
-        getLengthOfExercises: $.proxy(this.getLengthOfExercises, this),
-        getExercises: $.proxy(this.getExercises, this),
-        getSetRepScheme: $.proxy(this.getSetRepScheme, this),
-        getRandomAmountOfSets: $.proxy(this.getRandomAmountOfSets, this),
         saveWorkout: $.proxy(this.saveWorkout, this),
         workoutCategory: ko.observable(""),
         amountOfExercises: ko.observable("4"),
         workoutIntensity: ko.observable(""),
         filtersVisible: ko.observable(true),
-        toggleFilterVisibility: $.proxy(this.toggleFilterVisibility, this)
+        toggleFilterVisibility: $.proxy(this.toggleFilterVisibility, this),
+        includeCompoundExercises: ko.observable(true),
+        includeSupersets: ko.observable(false)
       };
     },
 
@@ -68,49 +59,48 @@ define([
 
     generateWorkout: function() {
       this.emptyCurrentWorkout();
-      var workoutCategory = this.viewModel.workoutCategory();
-      var amountOfExercises = this.viewModel.amountOfExercises();
+      this.setWorkoutExercises();
+      var workoutExercisesWithCategory = this.getExercises();
+      var exerciseAmountLength = this.getLengthOfExercises(workoutExercisesWithCategory);
+
+      this.pickExercisesForCurrentWorkout(exerciseAmountLength, workoutExercisesWithCategory);
+
+      this.sortCompoundExercises();
+
+      return this.viewModel.currentWorkout();
+    },
+
+    pickExercisesForCurrentWorkout: function(exerciseAmountLength, workoutExercisesWithCategory){
       var workoutIntensity = this.viewModel.workoutIntensity();
-      var workoutExercisesWithCategory = this.getExercises(workoutCategory);
-      var exerciseAmountLength = this.getLengthOfExercises(
-        workoutExercisesWithCategory,
-        amountOfExercises
-      );
 
       for (var i = 0; i < exerciseAmountLength; i++) {
-        var exercise =
-          workoutExercisesWithCategory[
-            Math.floor(Math.random() * workoutExercisesWithCategory.length)
-          ];
-
-        if (
-          !this.checkWorkoutDoesNotIncludeExercise(
-            exercise,
-            this.viewModel.currentWorkout()
-          )
-        ) {
-          var reps =
-            exercise.reps < 10
-              ? this.getSetRepScheme(exercise, workoutIntensity)
-              : this.getRandomRepScheme(exercise);
-          var sets = this.getAmountOfSets(exercise, workoutIntensity);
-
-          exercise.reps = reps;
-          exercise.sets = sets;
-
+        var exercise = workoutExercisesWithCategory[Math.floor(Math.random() * workoutExercisesWithCategory.length)];
+        if (!this.checkWorkoutDoesNotIncludeExercise(exercise, this.viewModel.currentWorkout())) {
+          this.setExerciseRepsAndSets(exercise);
           this.viewModel.currentWorkout.push(exercise);
         } else {
           i = i - 1;
         }
-      }
-
-      this.viewModel.currentWorkout.sort(function(left, right){
-        return left.type == right.type ? 0 : (left.type > right.type? -1 : 1)
-      });
-      return this.viewModel.currentWorkout();
+      };
     },
 
-    getExercises: function(workoutCategory) {
+    setExerciseRepsAndSets: function(exercise){
+      var workoutIntensity = this.viewModel.workoutIntensity();
+      var reps = exercise.reps < 10
+      ? this.getSetRepSchemeBasedOnWorkoutIntensity(exercise, workoutIntensity)
+      : this.getRandomRepScheme(exercise);
+      exercise.reps = reps;
+      exercise.sets = this.getAmountOfSets(exercise, workoutIntensity);
+    },
+
+    sortCompoundExercises: function(){
+      this.viewModel.currentWorkout.sort(function(left, right) {
+        return left.type == right.type ? 0 : left.type > right.type ? -1 : 1;
+      });
+    },
+
+    getExercises: function() {
+      var workoutCategory = this.viewModel.workoutCategory();
       if (workoutCategory !== "All") {
         return _.filter(this.viewModel.workoutExercises(), function(exercise) {
           return exercise.category.includes(workoutCategory);
@@ -120,10 +110,53 @@ define([
       }
     },
 
-    getLengthOfExercises: function(
-      workoutExercisesWithCategory,
-      amountOfExercises
-    ) {
+    setWorkoutExercises: function() {
+      var workoutCategory = this.viewModel.workoutCategory();
+      var workoutExercisesToReturn = [];
+      switch (workoutCategory) {
+        case "All":
+          workoutExercisesToReturn = allExercises;
+          break;
+        case "Chest":
+          workoutExercisesToReturn = chestExercises;
+          break;
+        case "Legs":
+          workoutExercisesToReturn = legExercises;
+          break;
+        case "Back":
+          workoutExercisesToReturn = backExercises;
+          break;
+        case "Shoulders":
+          workoutExercisesToReturn = shoulderExercises;
+          break;
+        case "Arms":
+          workoutExercisesToReturn = allExercises;
+          break;
+        case "Triceps":
+          workoutExercisesToReturn = allExercises;
+          break;
+        case "Biceps":
+          workoutExercisesToReturn = allExercises;
+          break;
+        case "Core":
+          workoutExercisesToReturn = allExercises;
+          break;
+        case "HIT":
+          workoutExercisesToReturn = allExercises;
+          break;
+        case "WOD":
+          workoutExercisesToReturn = allExercises;
+          break;
+        default:
+          workoutExercisesToReturn = allExercises;
+          break;
+      }
+
+      return this.viewModel.workoutExercises(workoutExercisesToReturn);
+    },
+
+    getLengthOfExercises: function(workoutExercisesWithCategory) {
+      var amountOfExercises = this.viewModel.amountOfExercises();
       if (amountOfExercises > workoutExercisesWithCategory.length) {
         return workoutExercisesWithCategory.length;
       } else {
@@ -135,7 +168,7 @@ define([
       return currentWorkout.includes(exercise) ? true : false;
     },
 
-    getSetRepScheme: function(exercise, workoutIntensity) {
+    getSetRepSchemeBasedOnWorkoutIntensity: function(exercise, workoutIntensity) {
       switch (workoutIntensity) {
         case "Volume":
           exercise.minReps = 5;
@@ -172,10 +205,10 @@ define([
     pickRandomRepScheme: function() {
       var randomNumber = Math.random();
       var threshold = 0;
-      for (let i = 0; i < this.viewModel.repSchemes().length; i++) {
-        threshold += parseFloat(this.viewModel.repSchemes()[i].chance);
+      for (let i = 0; i < this.viewModel.randomRepSchemes().length; i++) {
+        threshold += parseFloat(this.viewModel.randomRepSchemes()[i].chance);
         if (threshold > randomNumber) {
-          return this.viewModel.repSchemes()[i].value;
+          return this.viewModel.randomRepSchemes()[i].value;
         }
       }
     },
@@ -204,6 +237,7 @@ define([
         JSON.stringify(savedWorkouts)
       );
     }
+
   });
 
   return Home;

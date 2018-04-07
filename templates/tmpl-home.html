@@ -11,7 +11,7 @@
         <div class="form-group">
             <label>Workout Category</label>
             <select data-bind="value: workoutCategory" class="form-control">
-                <option data-bind="value: ''">All</option>
+                <option data-bind="value: 'All'">All</option>
                 <option data-bind="value: 'Chest'">Chest</option>
                 <option data-bind="value: 'Back'">Back</option>
                 <option data-bind="value: 'Legs'">Legs</option>
@@ -35,6 +35,24 @@
         <div class="form-group">
             <label>Amount of Exercises</label>
             <input data-bind="value: amountOfExercises" type="number" class="form-control" min="1" />
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" data-bind="checked: includeCompoundExercises" type="checkbox">
+                    <label class="form-check-label">
+                        Compounds?
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" data-bind="checked: includeSupersets" type="checkbox">
+                    <label class="form-check-label">
+                        Supersets?
+                    </label>
+                </div>
+            </div>
         </div>
     </section>
 

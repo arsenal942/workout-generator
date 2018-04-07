@@ -9,7 +9,8 @@ var chestExercises = [
     minReps: 1,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: false
   },
   {
     name: "Close Grip Bench Press",
@@ -21,7 +22,8 @@ var chestExercises = [
     minReps: 1,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: false
   },
   {
     name: "2 count Bench Press",
@@ -33,7 +35,8 @@ var chestExercises = [
     minReps: 3,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: false
   },
   {
     name: "Incline Bench Press",
@@ -45,7 +48,8 @@ var chestExercises = [
     minReps: 3,
     minSets: 3,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: false
   },
   {
     name: "Pushups",
@@ -57,7 +61,8 @@ var chestExercises = [
     minReps: 10,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   },
   {
     name: "Flat Dumbbell Bench Press",
@@ -69,7 +74,8 @@ var chestExercises = [
     minReps: 5,
     minSets: 3,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   },
   {
     name: "Incline Dumbbell Bench Press",
@@ -81,7 +87,8 @@ var chestExercises = [
     minReps: 5,
     minSets: 3,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   },
   {
     name: "Incline Dumbbell Fly",
@@ -93,7 +100,8 @@ var chestExercises = [
     minReps: 5,
     minSets: 3,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   },
   {
     name: "Flat Dumbbell Fly",
@@ -105,7 +113,8 @@ var chestExercises = [
     minReps: 5,
     minSets: 3,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   },
   {
     name: "Pec Deck",
@@ -117,7 +126,8 @@ var chestExercises = [
     minReps: 5,
     minSets: 3,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   }
 ];
 
@@ -132,7 +142,8 @@ var legExercises = [
     minReps: 1,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: false
   },
   {
     name: "Lunges",
@@ -144,7 +155,8 @@ var legExercises = [
     minReps: 8,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   },
   {
     name: "Leg Extensions",
@@ -156,7 +168,8 @@ var legExercises = [
     minReps: 8,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   },
   {
     name: "Hamstring Curls",
@@ -168,7 +181,8 @@ var legExercises = [
     minReps: 8,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   },
   {
     name: "Bulgarian Split Squats",
@@ -180,7 +194,8 @@ var legExercises = [
     minReps: 5,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: false
   },
   {
     name: "Standing Calf Raises",
@@ -192,7 +207,8 @@ var legExercises = [
     minReps: 10,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   },
   {
     name: "Seated Calf Raises",
@@ -204,7 +220,8 @@ var legExercises = [
     minReps: 10,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: true
   }
 ];
 
@@ -219,7 +236,8 @@ var backExercises = [
     minReps: 1,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: false
   },
   {
     name: "Pullups",
@@ -231,7 +249,8 @@ var backExercises = [
     minReps: 5,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: false
   }
 ];
 
@@ -245,7 +264,8 @@ var shoulderExercises = [
     minReps: 1,
     minSets: 2,
     reps: 0,
-    sets: 0
+    sets: 0,
+    canSuperset: false
   }
 ];
 
