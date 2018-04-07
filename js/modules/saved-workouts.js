@@ -47,15 +47,12 @@ define([
     },
 
     deleteWorkout: function(workoutName) {
-      console.log(workoutName);
-      var savedWorkouts = JSON.parse(localStorage["savedWorkouts"]);
-        var modelToDelete = _.find(savedWorkouts, function(savedWorkout){
-            return savedWorkout.workoutName === workoutName;
-        });
-
-        var removeModelFromLocalStorage = savedWorkouts.splice(modelToDelete);
-
-        localStorage.setItem("savedWorkouts", JSON.stringify(removeModelFromLocalStorage));
+      var savedWorkouts = JSON.parse(localStorage.getItem("savedWorkouts"));
+      var workoutToDelete = _.find(savedWorkouts, function(savedWorkout){
+        return savedWorkout.workoutName === workoutName;
+      }); 
+      savedWorkouts.splice(workoutToDelete, 1);
+      localStorage.setItem("savedWorkouts", JSON.stringify(savedWorkouts));
     }
   });
 

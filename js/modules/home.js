@@ -26,6 +26,8 @@ define([
 
     setupViewModel: function() {
       this.viewModel = {
+        workoutCategories: ko.observableArray(["All", "Chest", "Back", "Legs", "Shoulders", "Arms", "Triceps", "Biceps", "Core", "HIT", "WOD"]),
+        workoutIntensities: ko.observableArray(["All", "Strength", "Volume"]),
         workoutExercises: ko.observableArray(),
         compoundsInWorkout: ko.observable(0),
         currentWorkout: ko.observableArray([]),
@@ -150,7 +152,7 @@ define([
           workoutExercisesToReturn = allExercises;
           break;
       }
-
+      workoutExercisesToReturn = this.allowCompoundExercises(workoutExercisesToReturn);
       return this.viewModel.workoutExercises(workoutExercisesToReturn);
     },
 
@@ -169,6 +171,8 @@ define([
 
     getSetRepSchemeBasedOnWorkoutIntensity: function(exercise, workoutIntensity) {
       switch (workoutIntensity) {
+        case "All":
+          break;
         case "Volume":
           exercise.minReps = 5;
           exercise.maxReps = 12;
@@ -212,12 +216,15 @@ define([
       }
     },
 
-    limitCompoundExercises: function(exercise) {
-      if (exercise.type === "Compound") {
-        compoundsInWorkout = compoundsInWorkout + 1;
+    allowCompoundExercises: function(workoutExercises) {
+      if (this.viewModel.includeCompoundExercises()) {
+        return workoutExercises;
+      } else {
+        var workoutExercisesWithoutCompounds = _.filter(workoutExercises, function(workoutExercise){
+          return workoutExercise.type !== "Compound";
+        });
+        return workoutExercisesWithoutCompounds;
       }
-
-      return compoundsInWorkout < 2 ? true : false;
     },
 
     saveWorkout: function() {

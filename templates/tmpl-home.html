@@ -10,26 +10,12 @@
     <section data-bind="visible: filtersVisible()" id="filters">
         <div class="form-group">
             <label>Workout Category</label>
-            <select data-bind="value: workoutCategory" class="form-control">
-                <option data-bind="value: 'All'">All</option>
-                <option data-bind="value: 'Chest'">Chest</option>
-                <option data-bind="value: 'Back'">Back</option>
-                <option data-bind="value: 'Legs'">Legs</option>
-                <option data-bind="value: 'Shoulders'">Shoulders</option>
-                <option data-bind="value: 'Arms'">Arms</option>
-                <option data-bind="value: 'Biceps'">Biceps</option>
-                <option data-bind="value: 'Triceps'">Triceps</option>
-                <option data-bind="value: 'Core'">Core</option>
-                <option data-bind="value: 'Cardio'">Cardio</option>
-                <option data-bind="value: 'WOD'">WOD</option>
+            <select data-bind="value: workoutCategory, options: workoutCategories" class="form-control">
             </select>
         </div>
         <div class="form-group">
             <label>Workout Intensity</label>
-            <select data-bind="value: workoutIntensity" class="form-control">
-                <option data-bind="value: ''">Any</option>
-                <option data-bind="value: 'Volume'">Volume</option>
-                <option data-bind="value: 'Strength'">Strength</option>
+            <select data-bind="value: workoutIntensity, options: workoutIntensities" class="form-control">
             </select>
         </div>
         <div class="form-group">
