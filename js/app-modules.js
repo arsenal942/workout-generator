@@ -1,5 +1,5 @@
-define(["underscore", "modules/navigation", "modules/home", "modules/sidebar", "modules/footer"], 
-function(_, Navigation, Home, Sidebar, Footer) {
+define(["underscore", "modules/navigation", "modules/home", "modules/footer", "modules/saved-workouts"], 
+function(_, Navigation, Home, Footer, SavedWorkoutsModule) {
 
     var Modules = function() {
 
@@ -62,8 +62,8 @@ function(_, Navigation, Home, Sidebar, Footer) {
     //Add new modules here
     modules.add(new Navigation());
     modules.add(new Home());
-    modules.add(new Sidebar());
     modules.add(new Footer());
+    modules.add(new SavedWorkoutsModule());
 
     return modules;
 });

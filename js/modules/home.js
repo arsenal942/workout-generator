@@ -106,7 +106,7 @@ define([
     getExercises: function(workoutCategory) {
       if (workoutCategory !== "All") {
         return _.filter(this.viewModel.workoutExercises(), function(exercise) {
-          return exercise.category === workoutCategory;
+          return exercise.category.includes(workoutCategory);
         });
       } else {
         return this.viewModel.workoutExercises();
@@ -181,9 +181,11 @@ define([
 
       saveWorkout: function(){
         var name = prompt("Enter the workout name");
+        var description = prompt("Enter a description");
         var savedWorkouts = JSON.parse(localStorage.getItem("savedWorkouts")) || [];
         var newWorkout = {
           workoutName: name,
+          description: description,
           exercises: this.viewModel.currentWorkout()
         };
         savedWorkouts.push(newWorkout);
