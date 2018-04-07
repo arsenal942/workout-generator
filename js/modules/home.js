@@ -56,9 +56,9 @@ define([
         toggleFilterVisibility: $.proxy(this.toggleFilterVisibility, this)
       };
     },
-    
-    toggleFilterVisibility: function(){
-        return this.viewModel.filtersVisible(!this.viewModel.filtersVisible());
+
+    toggleFilterVisibility: function() {
+      return this.viewModel.filtersVisible(!this.viewModel.filtersVisible());
     },
 
     emptyCurrentWorkout: function() {
@@ -84,9 +84,13 @@ define([
           ];
 
         if (
-          !this.checkWorkoutDoesNotIncludeExercise( exercise, this.viewModel.currentWorkout())
+          !this.checkWorkoutDoesNotIncludeExercise(
+            exercise,
+            this.viewModel.currentWorkout()
+          )
         ) {
-          var reps = exercise.reps < 10
+          var reps =
+            exercise.reps < 10
               ? this.getSetRepScheme(exercise, workoutIntensity)
               : this.getRandomRepScheme(exercise);
           var sets = this.getAmountOfSets(exercise, workoutIntensity);
@@ -100,6 +104,9 @@ define([
         }
       }
 
+      this.viewModel.currentWorkout.sort(function(left, right){
+        return left.type == right.type ? 0 : (left.type > right.type? -1 : 1)
+      });
       return this.viewModel.currentWorkout();
     },
 
@@ -150,48 +157,53 @@ define([
     },
 
     getRandomRepScheme: function(exercise) {
-        //Random to be either the accepted Rep Scheme or its own value based on a %
-        var repScheme = this.pickRandomRepScheme();
-        if (repScheme) {
-          console.log("Randomised Rep Scheme: " + exercise.name + " : " + repScheme);
-          return repScheme;
-        } else {
-          return exercise.reps;
-        }
-      },
-      
-      pickRandomRepScheme: function() {
-        var randomNumber = Math.random();
-        var threshold = 0;
-        for (let i = 0; i < this.viewModel.repSchemes().length; i++) {
-          threshold += parseFloat(this.viewModel.repSchemes()[i].chance);
-          if (threshold > randomNumber) {
-            return this.viewModel.repSchemes()[i].value;
-          }
-        }
-      },
-      
-      limitCompoundExercises: function(exercise) {
-        if (exercise.type === "Compound") {
-          compoundsInWorkout = compoundsInWorkout + 1;
-        }
-      
-        return compoundsInWorkout < 2 ? true : false;
-      },
+      //Random to be either the accepted Rep Scheme or its own value based on a %
+      var repScheme = this.pickRandomRepScheme();
+      if (repScheme) {
+        console.log(
+          "Randomised Rep Scheme: " + exercise.name + " : " + repScheme
+        );
+        return repScheme;
+      } else {
+        return exercise.reps;
+      }
+    },
 
-      saveWorkout: function(){
-        var name = prompt("Enter the workout name");
-        var description = prompt("Enter a description");
-        var savedWorkouts = JSON.parse(localStorage.getItem("savedWorkouts")) || [];
-        var newWorkout = {
-          workoutName: name,
-          description: description,
-          exercises: this.viewModel.currentWorkout()
-        };
-        savedWorkouts.push(newWorkout);
-        return localStorage.setItem("savedWorkouts", JSON.stringify(savedWorkouts));
+    pickRandomRepScheme: function() {
+      var randomNumber = Math.random();
+      var threshold = 0;
+      for (let i = 0; i < this.viewModel.repSchemes().length; i++) {
+        threshold += parseFloat(this.viewModel.repSchemes()[i].chance);
+        if (threshold > randomNumber) {
+          return this.viewModel.repSchemes()[i].value;
+        }
+      }
+    },
+
+    limitCompoundExercises: function(exercise) {
+      if (exercise.type === "Compound") {
+        compoundsInWorkout = compoundsInWorkout + 1;
       }
 
+      return compoundsInWorkout < 2 ? true : false;
+    },
+
+    saveWorkout: function() {
+      var name = prompt("Enter the workout name");
+      var description = prompt("Enter a description");
+      var savedWorkouts =
+        JSON.parse(localStorage.getItem("savedWorkouts")) || [];
+      var newWorkout = {
+        workoutName: name,
+        description: description,
+        exercises: this.viewModel.currentWorkout()
+      };
+      savedWorkouts.push(newWorkout);
+      return localStorage.setItem(
+        "savedWorkouts",
+        JSON.stringify(savedWorkouts)
+      );
+    }
   });
 
   return Home;
