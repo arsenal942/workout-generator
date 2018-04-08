@@ -19,5 +19,9 @@
     "moment": "latest",
     "requirejs": "latest",
     "underscore": "latest"
+  },
+  "dependencies": {
+    "daemonite-material": "^4.0.0",
+    "popper.js": "^1.14.3"
   }
 }

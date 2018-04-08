@@ -1,4 +1,4 @@
-define(["vent", "router", "app-modules", "js/backbone-nested"], function (vent, router, modules) {
+define(["vent", "router", "app-modules", "js/backbone-nested", "bootstrap"], function (vent, router, modules) {
   function Application() {
 
     this.addHashIfNoneExists = function () {

@@ -237,7 +237,7 @@ define([
         });
         //Filter based on category to avoid random supersets
         if (exercisesWithSupersets.length > 1){
-
+          //Based on chance, create superset
         }
 
       }
