@@ -230,16 +230,19 @@ define([
     createSupersets: function(){
       var probabilityOfSuperset = 0.5;
       var randomNumber = Math.random();
+      var superset;
 
       if (probabilityOfSuperset > randomNumber){
         var exercisesWithSupersets = _.filter(this.viewModel.currentWorkout(), function(exercise){
           return exercise.canSuperset === true;
         });
-        //Filter based on category to avoid random supersets
         if (exercisesWithSupersets.length > 1){
           //Based on chance, create superset
+          if (probabilityOfSuperset > randomNumber) {
+            //Filter based on category to avoid random supersets
+            
+          }
         }
-
       }
     },
 

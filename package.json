@@ -11,17 +11,32 @@
     "build": "npm install"
   },
   "devDependencies": {
+    "del": "2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "0.3.2",
+    "gulp-clean-css": "^2.0.9",
+    "gulp-concat": "2.6.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-exec": "2.1.2",
+    "gulp-filter": "^4.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^1.5.3",
+    "gulp-wait": "0.0.2",
+    "main-bower-files": "^2.13.1",
+    "merge-stream": "1.0.0"
+  },
+  "dependencies": {
     "backbone": "latest",
     "bootstrap": "latest",
+    "daemonite-material": "^4.0.0",
+    "gulp-main-npm-files": "^1.0.5",
     "jquery": "latest",
     "knockback": "latest",
     "knockout": "latest",
     "moment": "latest",
-    "requirejs": "latest",
+    "popper.js": "^1.14.3",
+    "requirejs": "^2.3.5",
     "underscore": "latest"
-  },
-  "dependencies": {
-    "daemonite-material": "^4.0.0",
-    "popper.js": "^1.14.3"
   }
 }
