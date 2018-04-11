@@ -8,7 +8,7 @@ define([
   "js/model-store",
   "js/module",
   "js/data/exercises"
-], function(Backbone, _, ko, kb, vent, moment, modelStore, Module) {
+], function(Backbone, _, ko, kb, vent, moment, modelStore, Module, bootbox) {
   var Home = Module.extend({
     name: "home",
 

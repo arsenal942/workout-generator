@@ -1,8 +1,7 @@
-/// <binding ProjectOpened='copy-npm-dependencies' />
+/// <binding ProjectOpened='copy-bower-dependencies' />
 var gulp = require("gulp");
 var gulpFilter = require("gulp-filter");
 var mainBowerFiles = require("main-bower-files");
-var mainNpmFiles = require("gulp-main-npm-files");
 var uglify = require("gulp-uglify");
 var minifycss = require("gulp-clean-css");
 var rename = require("gulp-rename");
@@ -11,12 +10,11 @@ var debug = require("gulp-debug");
 var concat = require("gulp-concat");
 var exec = require('gulp-exec');
 var wait = require("gulp-wait");
-var sass = require("gulp-sass");
 
 var dest_path = ".";
 var pre_dest_path = "./prewww";
 
-gulp.task("copy-npm-dependencies", function () {
+gulp.task("copy-bower-dependencies", function () {
 
     var jsFilter = gulpFilter("**/*.js", { restore: true });
     var cssFilter = gulpFilter("**/*.css", { restore: true });
@@ -27,11 +25,10 @@ gulp.task("copy-npm-dependencies", function () {
     var woffFilter = gulpFilter("**/*.woff", { restore: true });
     var woff2Filter = gulpFilter("**/*.woff2", { restore: true });
 
-    return gulp.src(mainNpmFiles())
+    return gulp.src(mainBowerFiles())
         // grab vendor js files from bower_components, minify and push in /public
         .pipe(jsFilter)
         .pipe(debug({ title: "copy-dependencies:", minimal: false }))
-        .pipe(gulp.dest(dest_path + "/scripts"))
         .pipe(uglify())
         .pipe(rename({
             suffix: ".min"
@@ -41,7 +38,6 @@ gulp.task("copy-npm-dependencies", function () {
 
         // grab vendor css files from bower_components, minify and push in /public
         .pipe(cssFilter)
-        .pipe(gulp.dest(dest_path + "/css"))
         .pipe(minifycss())
         .pipe(rename({
             suffix: ".min"
@@ -68,20 +64,6 @@ gulp.task("copy-npm-dependencies", function () {
         .pipe(woff2Filter)
         .pipe(gulp.dest(dest_path + "/fonts"))
         .pipe(woff2Filter.restore);
-});
-
-gulp.task("compile-sass", function() {
-    var sassStream = gulp.src("./sass/**/*.scss") //CHANGE HERE
-        .pipe(debug({ title: "build-sass:", minimal: false }))
-        .pipe(sass().on("error", sass.logError));
-
-    return merge(sassStream)
-        .pipe(concat("stylesheet.css"))
-        .pipe(gulp.dest(dest_path + "/css"));
-});
-
-gulp.task("watch-sass-changes", ["compile-sass"], function () {
-    gulp.watch("./sass/**/*.scss", ["compile-sass"]);
 });
 
 gulp.task("copy-default-files", function () {

@@ -1,10 +1,10 @@
 {
   "name": "workout-generator",
+  "authors": [
+    "Niholas Clancy"
+  ],
   "description": "",
   "main": "",
-  "authors": [
-    "Arsenal - Nomm"
-  ],
   "license": "MIT",
   "homepage": "",
   "private": true,
@@ -14,5 +14,36 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.bundle.js",
+        "dist/css/bootstrap.css"
+      ]
+    },
+    "sweet-modal": {
+      "main": [
+        "dist/dev/jquery.sweet-modal.js",
+        "dist/dev/jquery.sweet-modal.css"
+      ]
+    },
+    "popper.js": {
+      "main": [
+        "dist/umd/popper.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "backbone": "latest",
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "knockback": "latest",
+    "knockout": "latest",
+    "moment": "latest",
+    "requirejs": "latest",
+    "underscore": "latest",
+    "sweet-modal": "latest",
+    "popper.js":"latest"
+  }
 }

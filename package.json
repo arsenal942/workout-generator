@@ -25,17 +25,5 @@
     "gulp-wait": "0.0.2",
     "main-bower-files": "^2.13.1",
     "merge-stream": "1.0.0"
-  },
-  "dependencies": {
-    "backbone": "latest",
-    "bootstrap": "latest",
-    "gulp-main-npm-files": "^1.0.5",
-    "jquery": "latest",
-    "knockback": "latest",
-    "knockout": "latest",
-    "moment": "latest",
-    "popper.js": "latest",
-    "requirejs": "latest",
-    "underscore": "latest"
   }
 }

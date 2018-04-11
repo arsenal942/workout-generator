@@ -14,15 +14,15 @@ requirejs.config({
     "model-store": "js/model-store",
     exercises: "js/data/exercises",
 
-    backbone: "./node_modules/backbone/backbone-min",
-    jquery: "./node_modules/jquery/dist/jquery.min",
-    popper: "./node_modules/popper.js/dist/umd/popper.min",
-    bootstrap: "./node_modules/bootstrap/dist/js/bootstrap.bundle.min",
-    knockback: "./node_modules/knockback/knockback.min",
-    knockout: "./node_modules/knockout/build/output/knockout-latest",
-    underscore: "./node_modules/underscore/underscore",
-    moment: "./node_modules/moment/min/moment.min"
-    
+    backbone: "scripts/backbone.min",
+    jquery: "scripts/jquery.min",
+    knockback: "scripts/knockback.min",
+    knockout: "scripts/knockout.min",
+    underscore: "scripts/underscore.min",
+    moment: "scripts/moment.min",
+    sweet: "scripts/jquery.sweet-modal.min",
+    popper: "scripts/popper.min",
+    bootstrap: "scripts/bootstrap.bundle.min",
   },
 
   shim: {
