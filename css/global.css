@@ -1,20 +1,45 @@
-html {
-  position: relative;
-  min-height: 100%;
-}
 body {
   background: #f2f3f8;
-  padding-top: 5rem;
-  margin-bottom: 60px; /* Margin bottom by footer height */
 }
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.navbar-brand, .nav-link, a {
+  color: #83848a!important;
+}
+
+.nav-link {
+  font-weight: lighter!important;
+}
+
+.nav-link.active {
+  font-weight: bold!important;
+}
+
 .container {
-  width: auto;
+  max-width: 1080px;
   text-align: center;
-  padding: 0 15px;
+  margin-top: 100px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 100px;
+  line-height: 60px;
 }
 
 .navbar {
-  background: #664ef7;
+  background: #ffffff;
+  margin-top: -100px;
 }
 
 .btn-purple {
@@ -37,13 +62,4 @@ body {
 .btn-purple-outline:hover {
   background: #664ef7;
   color: white;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px; /* Set the fixed height of the footer here */
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;
 }

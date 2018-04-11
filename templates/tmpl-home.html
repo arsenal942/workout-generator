@@ -8,20 +8,6 @@
     </section>
 
     <section data-bind="visible: filtersVisible()" id="filters">
-        <div class="form-group">
-            <label>Workout Category</label>
-            <select data-bind="value: workoutCategory, options: workoutCategories" class="form-control">
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Workout Intensity</label>
-            <select data-bind="value: workoutIntensity, options: workoutIntensities" class="form-control">
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Amount of Exercises</label>
-            <input data-bind="value: amountOfExercises" type="number" class="form-control" min="1" />
-        </div>
         <div class="form-row">
             <div class="col">
                 <div class="form-check">
@@ -37,6 +23,28 @@
                     <label class="form-check-label">
                         Supersets?
                     </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Workout Category</label>
+                    <select data-bind="value: workoutCategory, options: workoutCategories" class="form-control">
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Workout Intensity</label>
+                    <select data-bind="value: workoutIntensity, options: workoutIntensities" class="form-control">
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Amount of Exercises</label>
+                    <input data-bind="value: amountOfExercises" type="number" class="form-control" min="1" />
                 </div>
             </div>
         </div>

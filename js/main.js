@@ -21,8 +21,8 @@ requirejs.config({
     knockback: "./node_modules/knockback/knockback.min",
     knockout: "./node_modules/knockout/build/output/knockout-latest",
     underscore: "./node_modules/underscore/underscore",
-    moment: "./node_modules/moment/min/moment.min",
-    daemonite: "./node_modules/daemonite-material/js/material.min"
+    moment: "./node_modules/moment/min/moment.min"
+    
   },
 
   shim: {
@@ -51,9 +51,6 @@ requirejs.config({
     },
     bootstrap: {
       deps: ["jquery", "popper"]
-    },
-    daemonite: {
-      deps: ["bootstrap"]
     }
   },
 
@@ -77,6 +74,11 @@ require(["moment"], function(m) {
 var popper = null;
 require(["popper"], function(p) {
   popper = p;
+});
+
+var bootstrap = null;
+require(["bootstrap"], function(b) {
+  bootstrap = b;
 });
 
 require(["application"], function(application) {

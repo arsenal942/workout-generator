@@ -37,6 +37,7 @@ define(["jquery", "underscore", "backbone", "knockout", "vent", "templater", "js
 
                 self.started = true;
                 vent.trigger("module-started module-started:" + self.name, parameters, self.name);
+                $(window).scrollTop(0);
             });
         },
 

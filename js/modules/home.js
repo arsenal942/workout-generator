@@ -238,10 +238,8 @@ define([
         });
         if (exercisesWithSupersets.length > 1){
           //Based on chance, create superset
-          if (probabilityOfSuperset > randomNumber) {
-            //Filter based on category to avoid random supersets
-            
-          }
+          //Filter based on category to avoid random supersets
+           
         }
       }
     },

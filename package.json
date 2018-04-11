@@ -29,14 +29,13 @@
   "dependencies": {
     "backbone": "latest",
     "bootstrap": "latest",
-    "daemonite-material": "^4.0.0",
     "gulp-main-npm-files": "^1.0.5",
     "jquery": "latest",
     "knockback": "latest",
     "knockout": "latest",
     "moment": "latest",
-    "popper.js": "^1.14.3",
-    "requirejs": "^2.3.5",
+    "popper.js": "latest",
+    "requirejs": "latest",
     "underscore": "latest"
   }
 }
