@@ -1,10 +1,19 @@
 <div data-page="home">
-    <section id="main" data-bind="visible: currentWorkout().length">
-        <h3 data-bind="text: 'Category: ' + workoutCategory()"></h3>
-        <!-- ko foreach: currentWorkout() -->
-        <p class='lead' data-bind="text: name + ' - ' + sets + ' * ' + reps"></p>
-        <!-- /ko -->
-        <hr/>
+    <div class="alert alert-success alert-dismissible fade show" data-bind="visible: successMessage" role="alert">
+        <strong data-bind="text: successMessage()"></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <section style="margin-bottom: 20px;" id="main" class="card card-outline-secondary" data-bind="visible: currentWorkout().length">
+        <div class="card-header">
+            <h3 data-bind="text: 'Category: ' + workoutCategory()"></h3>
+        </div>
+        <div class="card-body">
+            <!-- ko foreach: currentWorkout() -->
+            <p class='lead' data-bind="text: name + ' - ' + sets + ' * ' + reps"></p>
+            <!-- /ko -->
+        </div>
     </section>
 
     <section data-bind="visible: filtersVisible()" id="filters">

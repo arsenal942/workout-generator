@@ -45,7 +45,8 @@ define([
         filtersVisible: ko.observable(true),
         toggleFilterVisibility: $.proxy(this.toggleFilterVisibility, this),
         includeCompoundExercises: ko.observable(true),
-        includeSupersets: ko.observable(false)
+        includeSupersets: ko.observable(false),
+        successMessage: ko.observable("")
       };
     },
 
@@ -56,6 +57,7 @@ define([
     resetCurrentWorkout: function() {
       this.viewModel.currentWorkout([]);
       this.viewModel.compoundsInWorkout(0);
+      this.viewModel.successMessage("");
     },
 
     generateWorkout: function() {
@@ -247,18 +249,18 @@ define([
     saveWorkout: function() {
       var name = prompt("Enter the workout name");
       var description = prompt("Enter a description");
-      var savedWorkouts =
-        JSON.parse(localStorage.getItem("savedWorkouts")) || [];
-      var newWorkout = {
-        workoutName: name,
-        description: description,
-        exercises: this.viewModel.currentWorkout()
-      };
-      savedWorkouts.push(newWorkout);
-      return localStorage.setItem(
-        "savedWorkouts",
-        JSON.stringify(savedWorkouts)
-      );
+      var savedWorkouts = JSON.parse(localStorage.getItem("savedWorkouts")) || [];
+
+      if(name && description !== null && name.length){
+        var newWorkout = {
+          workoutName: name,
+          description: description,
+          exercises: this.viewModel.currentWorkout()
+        };
+        savedWorkouts.push(newWorkout);
+        localStorage.setItem("savedWorkouts", JSON.stringify(savedWorkouts));
+        this.viewModel.successMessage("Workout Saved Successfully");
+      }      
     }
 
   });
