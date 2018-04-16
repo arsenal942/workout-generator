@@ -1,5 +1,5 @@
 # Workout Generator
-Workout Generator is an easy to use, opensource, workout generator that requires no database. There is zero installation required. All you have to do is clone/download the repository, and you are up and running.
+Workout Generator is an easy to use, open source, workout generator that requires no database. There is zero installation required. All you have to do is clone/download the repository, and you are up and running.
 
 # Requirements
 - npm
