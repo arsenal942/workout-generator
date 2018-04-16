@@ -2,8 +2,6 @@ requirejs.config({
   baseUrl: "",
 
   paths: {
-    collections: "js/collections",
-    models: "js/models",
     modules: "js/modules",
 
     "app-modules": "js/app-modules",
@@ -11,7 +9,6 @@ requirejs.config({
     router: "js/router",
     templater: "js/templater",
     vent: "js/vent",
-    "model-store": "js/model-store",
     exercises: "js/data/exercises",
 
     backbone: "scripts/backbone.min",

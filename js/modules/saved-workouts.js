@@ -5,9 +5,8 @@ define([
   "knockback",
   "vent",
   "moment",
-  "js/model-store",
   "js/module"
-], function(Backbone, _, ko, kb, vent, moment, modelStore, Module) {
+], function(Backbone, _, ko, kb, vent, moment, Module) {
   var SavedWorkoutsModule = Module.extend({
     name: "saved-workouts",
 
@@ -17,7 +16,7 @@ define([
       var self = this;
 
       vent.on("module-start:saved-workouts", function() {
-        vent.trigger("title:change", "Workout - Saved");
+        vent.trigger("title:change", "Workout Generator - Saved");
       });
 
       vent.on("module-started:saved-workouts", function() {

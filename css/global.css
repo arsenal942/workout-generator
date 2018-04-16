@@ -10,6 +10,10 @@ html {
   }
 }
 
+.navbar {
+  background: white;
+}
+
 .navbar-brand, .nav-link, a {
   color: #83848a!important;
 }

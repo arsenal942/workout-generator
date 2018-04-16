@@ -1,6 +1,8 @@
-<div id="saved-workouts">
-    <h1>Saved</h1>
+<div id="saved-workouts" class="container">
+    <h1>Saved Workouts</h1>
+    <p data-bind="visible: !savedWorkouts().length" class="text-center text-muted">You don't have any workouts saved.</p>
     <div class="row">
+        <!-- ko if: savedWorkouts().length -->
         <!-- ko foreach: savedWorkouts -->
         <div style="margin-bottom: 10px;" class="col-md-4">
             <div class="card">
@@ -15,6 +17,7 @@
                 </ul>
             </div>
         </div>
+        <!-- /ko -->
         <!-- /ko -->
     </div>
 </div>

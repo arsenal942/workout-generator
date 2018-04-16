@@ -1,4 +1,4 @@
-define(["backbone", "vent", "underscore", "knockout", "knockback", "js/module", "js/model-store"], function(Backbone, vent, _, ko, kb, Module, modelStore) {
+define(["backbone", "vent", "underscore", "knockout", "knockback", "js/module"], function(Backbone, vent, _, ko, kb, Module) {
     var Sidebar = Module.extend({
         name: "sidebar",
 

@@ -5,10 +5,9 @@ define([
   "knockback",
   "vent",
   "moment",
-  "js/model-store",
   "js/module",
   "js/data/exercises"
-], function(Backbone, _, ko, kb, vent, moment, modelStore, Module, bootbox) {
+], function(Backbone, _, ko, kb, vent, moment, Module, bootbox) {
   var Home = Module.extend({
     name: "home",
 
@@ -18,7 +17,7 @@ define([
       var self = this;
 
       vent.on("module-start:home", function() {
-        vent.trigger("title:change", "Workout - Dashboard");
+        vent.trigger("title:change", "Workout Generator - Home");
       });
 
       vent.on("module-started:home", function() {});
