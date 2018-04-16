@@ -2,12 +2,12 @@
     <h1>Saved</h1>
     <div class="row">
         <!-- ko foreach: savedWorkouts -->
-        <div class="col-md-4">
+        <div style="margin-bottom: 10px;" class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title" data-bind="text: workoutName"></h5>
-                    <p class="card-text" data-bind="text: description">
-                        <!-- <button class="btn btn-primary" data-bind="click: function(){$root.deleteWorkout(workoutName);}">Delete</button> -->
+                    <p class="card-text">
+                        <button class="btn btn-primary" data-bind="click: function(){$root.deleteWorkout(workoutName);}">Delete</button>
                     </p>
                 </div>
                 <ul data-bind="foreach: exercises" class="list-group list-group-flush">

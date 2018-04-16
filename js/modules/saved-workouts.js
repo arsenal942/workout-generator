@@ -43,16 +43,19 @@ define([
         return _.each(savedWorkouts, function(savedWorkout) {
           self.viewModel.savedWorkouts.push(savedWorkout);
         });
+      } else {
+        this.viewModel.savedWorkouts([]);
       }
     },
 
     deleteWorkout: function(workoutName) {
       var savedWorkouts = JSON.parse(localStorage.getItem("savedWorkouts"));
-      var workoutToDelete = _.find(savedWorkouts, function(savedWorkout){
+      var workoutToDelete = _.findIndex(savedWorkouts, function(savedWorkout){
         return savedWorkout.workoutName === workoutName;
       }); 
       savedWorkouts.splice(workoutToDelete, 1);
       localStorage.setItem("savedWorkouts", JSON.stringify(savedWorkouts));
+      this.fetchSavedWorkouts();
     }
   });
 

@@ -247,12 +247,13 @@ define([
     },
 
     saveWorkout: function() {
-      var name = prompt("Enter the workout name");
-      var description = prompt("Enter a description");
+      var newWorkout = {};
+      let name = prompt("Enter the workout name");
+      let description = prompt("Enter a description");
       var savedWorkouts = JSON.parse(localStorage.getItem("savedWorkouts")) || [];
 
       if(name && description !== null && name.length){
-        var newWorkout = {
+        newWorkout = {
           workoutName: name,
           description: description,
           exercises: this.viewModel.currentWorkout()
