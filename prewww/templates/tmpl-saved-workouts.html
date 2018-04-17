@@ -1,0 +1,23 @@
+<div id="saved-workouts" class="container">
+    <h1>Saved Workouts</h1>
+    <p data-bind="visible: !savedWorkouts().length" class="text-center text-muted">You don't have any workouts saved.</p>
+    <div class="row">
+        <!-- ko if: savedWorkouts().length -->
+        <!-- ko foreach: savedWorkouts -->
+        <div style="margin-bottom: 10px;" class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" data-bind="text: workoutName"></h5>
+                    <p class="card-text">
+                        <button class="btn btn-primary" data-bind="click: function(){$root.deleteWorkout(workoutName);}">Delete</button>
+                    </p>
+                </div>
+                <ul data-bind="foreach: exercises" class="list-group list-group-flush">
+                    <li class="list-group-item" data-bind="text: name + ' - ' + sets + ' * ' + reps"></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
