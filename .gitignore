@@ -2,14 +2,5 @@ fonts
 node_modules
 bower_components
 www
-scripts/backbone.min.js
-scripts/backbone.min.js
-scripts/bootstrap.bundle.min.js
-scripts/jquery.min.js
-scripts/jquery.sweet-modal.min.js
-scripts/knockback.min.js
-scripts/knockout.min.js
-scripts/moment.min.js
-scripts/popper.min.js
-scripts/require.min.js
-scripts/underscore.min.js
+scripts
+
