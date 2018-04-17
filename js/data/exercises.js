@@ -251,6 +251,45 @@ var backExercises = [
     reps: 0,
     sets: 0,
     canSuperset: false
+  },
+  {
+    name: "Barbell Rows",
+    value: "BarbellRows",
+    type: "Accessory",
+    category: ["Back"],
+    maxReps: 15,
+    maxSets: 5,
+    minReps: 3,
+    minSets: 2,
+    reps: 0,
+    sets: 0,
+    canSuperset: false
+  },
+  {
+    name: "Pendlay Rows",
+    value: "PendlayRows",
+    type: "Accessory",
+    category: ["Back"],
+    maxReps: 15,
+    maxSets: 5,
+    minReps: 5,
+    minSets: 2,
+    reps: 0,
+    sets: 0,
+    canSuperset: false
+  },
+  {
+    name: "Back Extensions",
+    value: "BackExtensions",
+    type: "Accessory",
+    category: ["Back"],
+    maxReps: 15,
+    maxSets: 5,
+    minReps: 5,
+    minSets: 2,
+    reps: 0,
+    sets: 0,
+    canSuperset: false
   }
 ];
 
@@ -266,7 +305,30 @@ var shoulderExercises = [
     reps: 0,
     sets: 0,
     canSuperset: false
-  }
+  },{
+    name: "Face Pulls",
+    value: "FacePulls",
+    category: ["Shoulders", "Back"],
+    maxReps: 20,
+    maxSets: 5,
+    minReps: 10,
+    minSets: 2,
+    reps: 0,
+    sets: 0,
+    canSuperset: false
+  },{
+    name: "Arnold Press",
+    value: "ArnoldPress",
+    category: ["Shoulders"],
+    maxReps: 12,
+    maxSets: 5,
+    minReps: 6,
+    minSets: 2,
+    reps: 0,
+    sets: 0,
+    canSuperset: false
+  },
+  
 ];
 
 var allExercises = [].concat.apply([],[chestExercises, legExercises, backExercises, shoulderExercises]);
