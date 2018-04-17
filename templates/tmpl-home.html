@@ -17,7 +17,7 @@
     </section>
 
     <section data-bind="visible: filtersVisible()" id="filters">
-        <div style="margin-bottom: 10px;" class="form-row">
+        <div style="margin-bottom: 30px;" class="form-row">
             <div class="col">
                 <div class="form-check">
                     <input class="form-check-input" data-bind="checked: includeCompoundExercises" type="checkbox">
@@ -59,7 +59,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="buttons">
         <button data-bind="click: generateWorkout" id="generateWorkout" class="btn btn-purple">Generate</button>
         <!-- ko if: currentWorkout().length -->
         <button class="btn btn-purple-outline" data-bind="text: filtersVisible() ? 'Hide Filters' : 'Show Filters', click: toggleFilterVisibility"></button>
