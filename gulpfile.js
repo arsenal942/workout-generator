@@ -112,3 +112,5 @@ gulp.task("build-www", function(){
 });
 
 gulp.task("build", ["build-prewww", "build-www"]);
+
+gulp.task("default", ["copy-bower-dependencies"]);
