@@ -10,6 +10,7 @@ var debug = require("gulp-debug");
 var concat = require("gulp-concat");
 var exec = require('gulp-exec');
 var wait = require("gulp-wait");
+var requirejsOptimize = require("gulp-requirejs-optimize");
 
 var dest_path = ".";
 var pre_dest_path = "./prewww";
@@ -102,7 +103,12 @@ gulp.task("requirejs-build", function () {
         .pipe(exec.reporter({}));
 });
 
-gulp.task("build-www", ["copy-default-files", "copy-templates", "copy-css", "copy-fonts", "copy-images", "copy-js", "copy-scripts", "requirejs-build"]);
+gulp.task("build-prewww", ["copy-default-files", "copy-templates", "copy-css", "copy-fonts", "copy-images", "copy-js", "copy-scripts"]);
 
-//The continuous build-server requires a default task for it to run hence why this just calls the build task
-gulp.task("default", ["build-www"]);
+gulp.task("build-www", function(){
+    return gulp.src("requirejs-build.js")
+        .pipe(requirejsOptimize())
+        .pipe(gulp.dest("./www"))
+});
+
+gulp.task("build", ["build-prewww", "build-www"]);
