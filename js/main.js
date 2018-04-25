@@ -9,7 +9,7 @@ requirejs.config({
     router: "js/router",
     templater: "js/templater",
     vent: "js/vent",
-    exercises: "js/data/exercises",
+    exercises: "js/exercises",
 
     backbone: "scripts/backbone.min",
     jquery: "scripts/jquery.min",

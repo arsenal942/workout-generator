@@ -6,8 +6,8 @@ define([
   "vent",
   "moment",
   "js/module",
-  "js/data/exercises"
-], function(Backbone, _, ko, kb, vent, moment, Module, bootbox) {
+  "exercises"
+], function(Backbone, _, ko, kb, vent, moment, Module) {
   var Home = Module.extend({
     name: "home",
 
@@ -48,23 +48,21 @@ define([
       };
     },
 
+    generateWorkout: function() {
+      this.resetCurrentWorkout();
+      this.setWorkoutExercises();
+      var workoutExercisesWithCategory = this.getExercisesBasedOnWorkoutCategory();
+      var maximumAmountOfExercisesForWorkout = this.getLengthOfExercises(workoutExercisesWithCategory);
+      this.pickExercisesForCurrentWorkout(maximumAmountOfExercisesForWorkout, workoutExercisesWithCategory);
+      this.sortCompoundExercisesToTopOfWorkout();
+      this.createSupersets();
+      return this.viewModel.currentWorkout();
+    },
+
     resetCurrentWorkout: function() {
       this.viewModel.currentWorkout([]);
       this.viewModel.compoundsInWorkout(0);
       this.viewModel.successMessage("");
-    },
-
-    generateWorkout: function() {
-      this.resetCurrentWorkout();
-      this.setWorkoutExercises();
-      var workoutExercisesWithCategory = this.getExercises();
-      var exerciseAmountLength = this.getLengthOfExercises(workoutExercisesWithCategory);
-
-      this.pickExercisesForCurrentWorkout(exerciseAmountLength, workoutExercisesWithCategory);
-
-      this.sortCompoundExercises();
-      this.createSupersets();
-      return this.viewModel.currentWorkout();
     },
 
     pickExercisesForCurrentWorkout: function(exerciseAmountLength, workoutExercisesWithCategory){
@@ -90,13 +88,13 @@ define([
       exercise.sets = this.getAmountOfSets(exercise, workoutIntensity);
     },
 
-    sortCompoundExercises: function(){
+    sortCompoundExercisesToTopOfWorkout: function(){
       this.viewModel.currentWorkout.sort(function(left, right) {
         return left.type == right.type ? 0 : left.type > right.type ? -1 : 1;
       });
     },
 
-    getExercises: function() {
+    getExercisesBasedOnWorkoutCategory: function() {
       var workoutCategory = this.viewModel.workoutCategory();
       if (workoutCategory !== "All") {
         return _.filter(this.viewModel.workoutExercises(), function(exercise) {
