@@ -36,14 +36,12 @@ define([
 
     fetchSavedWorkouts: function() {
       var self = this;
-      var savedWorkouts =
-        JSON.parse(localStorage.getItem("savedWorkouts")) || [];
+      var savedWorkouts = JSON.parse(localStorage.getItem("savedWorkouts")) || [];
+      this.viewModel.savedWorkouts([]);
       if (savedWorkouts.length) {
         return _.each(savedWorkouts, function(savedWorkout) {
           self.viewModel.savedWorkouts.push(savedWorkout);
         });
-      } else {
-        this.viewModel.savedWorkouts([]);
       }
     },
 
