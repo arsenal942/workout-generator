@@ -7,7 +7,15 @@
     </div>
     <section style="margin-bottom: 20px;" id="main" class="card card-outline-secondary" data-bind="visible: currentWorkout().length">
         <div class="card-header">
-            <h3 data-bind="text: 'Category: ' + workoutCategory()"></h3>
+            <span style="margin-left: 80px; font-size: 1.5rem;" data-bind="text: 'Category: ' + workoutCategory()"></span>
+            <span style="float: right;">
+                <div class="form-check">
+                    <input class="form-check-input" data-bind="checked: filtersVisible" type="checkbox">
+                    <label class="form-check-label">
+                        Show Filters?
+                    </label>
+                </div>
+            </span>
         </div>
         <div class="card-body">
             <!-- ko foreach: currentWorkout() -->
@@ -62,7 +70,6 @@
     <section class="buttons">
         <button data-bind="click: generateWorkout" id="generateWorkout" class="btn btn-purple">Generate</button>
         <!-- ko if: currentWorkout().length -->
-        <button class="btn btn-purple-outline" data-bind="text: filtersVisible() ? 'Hide Filters' : 'Show Filters', click: toggleFilterVisibility"></button>
         <button data-bind="click: saveWorkout" class="btn btn-purple-outline">Save Workout</button>
         <!-- /ko -->
     </section>

@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm install"
+    "build": "npm install && bower install && gulp copy-bower-dependencies"
   },
   "devDependencies": {
     "del": "2.2.2",

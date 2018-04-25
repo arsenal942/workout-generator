@@ -42,15 +42,10 @@ define([
         amountOfExercises: ko.observable("4"),
         workoutIntensity: ko.observable(""),
         filtersVisible: ko.observable(true),
-        toggleFilterVisibility: $.proxy(this.toggleFilterVisibility, this),
         includeCompoundExercises: ko.observable(true),
         includeSupersets: ko.observable(false),
         successMessage: ko.observable("")
       };
-    },
-
-    toggleFilterVisibility: function() {
-      return this.viewModel.filtersVisible(!this.viewModel.filtersVisible());
     },
 
     resetCurrentWorkout: function() {
