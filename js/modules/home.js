@@ -108,48 +108,21 @@ define([
     },
 
     setWorkoutExercises: function() {
-      var workoutCategory = this.viewModel.workoutCategory();
-      var workoutExercisesToReturn = [];
-      switch (workoutCategory) {
-        case "All":
-          workoutExercisesToReturn = allExercises;
-          break;
-        case "Chest":
-          workoutExercisesToReturn = chestExercises;
-          break;
-        case "Legs":
-          workoutExercisesToReturn = legExercises;
-          break;
-        case "Back":
-          workoutExercisesToReturn = backExercises;
-          break;
-        case "Shoulders":
-          workoutExercisesToReturn = shoulderExercises;
-          break;
-        case "Arms":
-          workoutExercisesToReturn = allExercises;
-          break;
-        case "Triceps":
-          workoutExercisesToReturn = allExercises;
-          break;
-        case "Biceps":
-          workoutExercisesToReturn = allExercises;
-          break;
-        case "Core":
-          workoutExercisesToReturn = allExercises;
-          break;
-        case "HIT":
-          workoutExercisesToReturn = allExercises;
-          break;
-        case "WOD":
-          workoutExercisesToReturn = allExercises;
-          break;
-        default:
-          workoutExercisesToReturn = allExercises;
-          break;
-      }
+      var workoutExercisesToReturn = this.filterExercisesBasedOnCategory();
+      
       workoutExercisesToReturn = this.allowCompoundExercises(workoutExercisesToReturn);
       return this.viewModel.workoutExercises(workoutExercisesToReturn);
+    },
+
+    filterExercisesBasedOnCategory: function(){
+      var category = this.viewModel.workoutCategory();
+      if (this.viewModel.workoutCategory() !== "All"){
+        return _.filter(allExercises, function(exercise){
+          return exercise.category.includes(category);
+        });
+      } else {
+        return allExercises;
+      }
     },
 
     getLengthOfExercises: function(workoutExercisesWithCategory) {

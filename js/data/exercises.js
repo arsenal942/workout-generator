@@ -1,4 +1,134 @@
-var legExercises = [
+var allExercises = [
+  {
+    name: "Bench Press",
+    value: "BenchPress",
+    type: "Compound",
+    category: ["Chest"],
+    maxReps: 12,
+    maxSets: 9,
+    minReps: 1,
+    minSets: 2,
+    reps: 0,
+    sets: 0,
+    canSuperset: false
+  },
+  {
+    name: "Close Grip Bench Press",
+    value: "CloseGripBenchPress",
+    type: "Compound",
+    category: ["Chest"],
+    maxReps: 15,
+    maxSets: 9,
+    minReps: 1,
+    minSets: 2,
+    reps: 0,
+    sets: 0,
+    canSuperset: false
+  },
+  {
+    name: "2 count Bench Press",
+    type: "Compound",
+    value: "2ctBenchPress",
+    category: ["Chest"],
+    maxReps: 10,
+    maxSets: 5,
+    minReps: 3,
+    minSets: 2,
+    reps: 0,
+    sets: 0,
+    canSuperset: false
+  },
+  {
+    name: "Incline Bench Press",
+    type: "Compound",
+    value: "InclineBenchPress",
+    category: ["Chest"],
+    maxReps: 12,
+    maxSets: 5,
+    minReps: 3,
+    minSets: 3,
+    reps: 0,
+    sets: 0,
+    canSuperset: false
+  },
+  {
+    name: "Pushups",
+    value: "Pushups",
+    type: "Accessory",
+    category: ["Chest", "Triceps", "Arms"],
+    maxReps: 25,
+    maxSets: 5,
+    minReps: 10,
+    minSets: 2,
+    reps: 0,
+    sets: 0,
+    canSuperset: true
+  },
+  {
+    name: "Flat Dumbbell Bench Press",
+    type: "Accessory",
+    value: "FlatDumbbellBenchPress",
+    category: ["Chest"],
+    maxReps: 15,
+    maxSets: 5,
+    minReps: 5,
+    minSets: 3,
+    reps: 0,
+    sets: 0,
+    canSuperset: true
+  },
+  {
+    name: "Incline Dumbbell Bench Press",
+    type: "Accessory",
+    value: "InclineDumbbellBenchPress",
+    category: ["Chest"],
+    maxReps: 15,
+    maxSets: 5,
+    minReps: 5,
+    minSets: 3,
+    reps: 0,
+    sets: 0,
+    canSuperset: true
+  },
+  {
+    name: "Incline Dumbbell Fly",
+    type: "Accessory",
+    value: "InclineDumbbellFly",
+    category: ["Chest"],
+    maxReps: 15,
+    maxSets: 5,
+    minReps: 5,
+    minSets: 3,
+    reps: 0,
+    sets: 0,
+    canSuperset: true
+  },
+  {
+    name: "Flat Dumbbell Fly",
+    type: "Accessory",
+    value: "FlatDumbbellFly",
+    category: ["Chest"],
+    maxReps: 15,
+    maxSets: 5,
+    minReps: 5,
+    minSets: 3,
+    reps: 0,
+    sets: 0,
+    canSuperset: true
+  },
+  {
+    name: "Pec Deck",
+    type: "Accessory",
+    value: "PecDeck",
+    category: ["Chest"],
+    maxReps: 15,
+    maxSets: 5,
+    minReps: 5,
+    minSets: 3,
+    reps: 0,
+    sets: 0,
+    canSuperset: true
+  },
   {
     name: "Squat",
     value: "Squat",
@@ -89,10 +219,7 @@ var legExercises = [
     reps: 0,
     sets: 0,
     canSuperset: true
-  }
-];
-
-var backExercises = [
+  },
   {
     name: "Deadlift",
     value: "Deadlift",
@@ -157,10 +284,7 @@ var backExercises = [
     reps: 0,
     sets: 0,
     canSuperset: false
-  }
-];
-
-var shoulderExercises = [
+  },
   {
     name: "Overhead Press",
     value: "OHP",
@@ -198,20 +322,3 @@ var shoulderExercises = [
     canSuperset: false
   }
 ];
-var allExercises;
-var chestExercises = [];
-
-$.getJSON("../js/data/exercises.json", function(data) {
-  pushDataIntoVariable(chestExercises, data.chestExercises);
-  console.log(chestExercises);
-  allExercises = [].concat.apply(
-    [],
-    [chestExercises, legExercises, backExercises, shoulderExercises]
-  );
-});
-
-pushDataIntoVariable = function(variable, data) {
-  _.each(data, function(exercise) {
-    variable.push(exercise);
-  });
-};
