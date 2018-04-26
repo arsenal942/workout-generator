@@ -19,7 +19,7 @@
         </div>
         <div class="card-body">
             <!-- ko foreach: currentWorkout() -->
-            <p class='lead' data-bind="text: name + ' - ' + sets + ' * ' + reps"></p>
+            <p class='lead' data-bind="tryText: name + ' - ' + sets + ' * ' + reps"></p>
             <!-- /ko -->
         </div>
     </section>
@@ -61,14 +61,14 @@
             <div class="col">
                 <div class="form-group">
                     <label>Amount of Exercises</label>
-                    <input data-bind="value: amountOfExercises" type="number" class="form-control" min="1" />
+                    <input data-bind="value: amountOfExercises" type="number" class="form-control"/>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="buttons">
-        <button data-bind="click: generateWorkout" id="generateWorkout" class="btn btn-purple">Generate</button>
+    <section style="margin: 10px;">
+        <button data-bind="click: generateWorkout" class="btn btn-purple">Generate</button>
         <!-- ko if: currentWorkout().length -->
         <button data-bind="click: saveWorkout" class="btn btn-purple-outline">Save Workout</button>
         <!-- /ko -->

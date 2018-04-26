@@ -1,5 +1,5 @@
-define(["underscore", "modules/navigation", "modules/home", "modules/footer", "modules/saved-workouts", "modules/about"], 
-function(_, Navigation, Home, Footer, SavedWorkoutsModule, About) {
+define(["underscore", "modules/navigation", "modules/home", "modules/footer", "modules/saved-workouts", "modules/about", "modules/configuration"], 
+function(_, Navigation, Home, Footer, SavedWorkoutsModule, About, Configuration) {
 
     var Modules = function() {
 
@@ -65,6 +65,7 @@ function(_, Navigation, Home, Footer, SavedWorkoutsModule, About) {
     modules.add(new Footer());
     modules.add(new SavedWorkoutsModule());
     modules.add(new About());
+    modules.add(new Configuration());
 
     return modules;
 });

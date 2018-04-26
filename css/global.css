@@ -67,10 +67,6 @@ a {
   color: #ffffff;
 }
 
-.buttons button {
-  margin: 10px;
-}
-
 @media (min-width: 768px) {
   html {
     font-size: 16px;

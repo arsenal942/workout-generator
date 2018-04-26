@@ -3,7 +3,7 @@ requirejs.config({
 
   paths: {
     modules: "js/modules",
-
+    models: "js/models",
     "app-modules": "js/app-modules",
     application: "js/application",
     router: "js/router",
@@ -19,7 +19,7 @@ requirejs.config({
     moment: "scripts/moment.min",
     sweet: "scripts/jquery.sweet-modal.min",
     popper: "scripts/popper.min",
-    bootstrap: "scripts/bootstrap.bundle.min",
+    bootstrap: "scripts/bootstrap.bundle.min"
   },
 
   shim: {

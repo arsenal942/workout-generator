@@ -27,7 +27,7 @@
     moment: "scripts/moment.min",
     sweet: "scripts/jquery.sweet-modal.min",
     popper: "scripts/popper.min",
-    bootstrap: "scripts/bootstrap.bundle.min",
+    bootstrap: "scripts/bootstrap.bundle.min"
   },
 
   shim: {
