@@ -39,7 +39,7 @@ define([
         generateWorkout: $.proxy(this.generateWorkout, this),
         saveWorkout: $.proxy(this.saveWorkout, this),
         workoutCategory: ko.observable(""),
-        amountOfExercises: ko.observable("4"),
+        amountOfExercises: ko.observable(4),
         workoutIntensity: ko.observable(""),
         filtersVisible: ko.observable(true),
         includeCompoundExercises: ko.observable(true),
@@ -65,10 +65,10 @@ define([
       this.viewModel.successMessage("");
     },
 
-    pickExercisesForCurrentWorkout: function(exerciseAmountLength, workoutExercisesWithCategory){
+    pickExercisesForCurrentWorkout: function(maximumAmountOfExercisesForWorkout, workoutExercisesWithCategory){
       var workoutIntensity = this.viewModel.workoutIntensity();
 
-      for (var i = 0; i < exerciseAmountLength; i++) {
+      for (var i = 0; i < maximumAmountOfExercisesForWorkout; i++) {
         var exercise = workoutExercisesWithCategory[Math.floor(Math.random() * workoutExercisesWithCategory.length)];
         if (!this.checkWorkoutDoesNotIncludeExercise(exercise, this.viewModel.currentWorkout())) {
           this.setExerciseRepsAndSets(exercise);
