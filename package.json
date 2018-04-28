@@ -8,6 +8,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "start" : "node server.js",
     "build": "npm install && bower install && gulp copy-bower-dependencies"
   },
   "devDependencies": {
@@ -26,5 +27,8 @@
     "gulp-wait": "0.0.2",
     "main-bower-files": "^2.13.1",
     "merge-stream": "1.0.0"
+  },
+  "dependencies": {
+    "express": "latest"
   }
 }
