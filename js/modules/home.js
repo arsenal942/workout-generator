@@ -49,6 +49,7 @@ define([
     },
 
     generateWorkout: function() {
+      console.log("Start Generate Workout");
       this.resetCurrentWorkout();
       this.setWorkoutExercises();
       var workoutExercisesWithCategory = this.getExercisesBasedOnWorkoutCategory();
